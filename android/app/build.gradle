@@ -1,55 +1,60 @@
-import java.util.Properties
-
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("dev.flutter.flutter-gradle-plugin")
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+    id "com.google.firebase.crashlytics"
 }
 
-val localProperties = Properties().apply {
-    val file = rootProject.file("local.properties")
-    if (file.exists()) {
-        file.reader(Charsets.UTF_8).use { load(it) }
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
     }
 }
-val flutterVersionCode = localProperties.getProperty("flutter.versionCode")?.toInt() ?: 1
-val flutterVersionName = localProperties.getProperty("flutter.versionName") ?: "1.0"
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
 
 android {
-    namespace = "com.adfood.operation"
+    namespace = "com.started.code"
     compileSdk = 35
-    ndkVersion = "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     sourceSets {
-        getByName("main") {
-            java.srcDir("src/main/kotlin")
-        }
+        main.java.srcDirs += 'src/main/kotlin'
     }
 
-    lint {
-        disable += "InvalidPackage"
+    lintOptions {
+        disable 'InvalidPackage'
     }
 
     defaultConfig {
-        applicationId = "com.adfood.operation"
-        minSdk = 26
-        targetSdk = 35
-        versionCode = flutterVersionCode
-        versionName = flutterVersionName
-        multiDexEnabled = true
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId ="com.started.code"
+        minSdkVersion 26
+        targetSdkVersion 35
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
     }
-    
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -67,29 +72,44 @@ android {
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
-            isShrinkResources = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+                // TODO: Add your own signing config for the release build.
+                // Signing with the debug keys for now, so `flutter run --release` works.
+                signingConfig signingConfigs.release
+
+                // Enables code shrinking, obfuscation, and optimization for only
+                // your project's release build type.
+                minifyEnabled false
+
+                // Enables resource shrinking, which is performed by the
+                // Android Gradle plugin.
+                shrinkResources false
+
+                // Includes the default ProGuard rules files that are packaged with
+                // the Android Gradle plugin. To learn more, go to the section about
+                // R8 configuration files.
+                proguardFiles getDefaultProguardFile(
+                        'proguard-android-optimize.txt'),
+                        'proguard-rules.pro'
+            }
     }
 
-    flavorDimensions += "env"
+    flavorDimensions = ["env"]
     productFlavors {
-        create("stg") {
-            dimension = "env"
-            applicationIdSuffix = ".stg"
-            resValue("string", "app_name", "Adfood Operation STG")
-            signingConfig = signingConfigs.getByName("release")
+        stg {
+            dimension 'env'
+            applicationIdSuffix ".stg"
+            resValue "string", "app_name", "STARTED STG"
+            // TODO : Enable this if you want sign your app
+            signingConfig signingConfigs.release
         }
-        create("prd") {
-            dimension = "env"
-            resValue("string", "app_name", "Adfood Operation")
-            signingConfig = signingConfigs.getByName("release")
+        prd {
+            dimension 'env'
+            resValue "string", "app_name", "STARTED"
+            // TODO : Enable this if you want sign your app
+            signingConfig signingConfigs.release
         }
+
+
     }
 }
 
@@ -98,8 +118,8 @@ flutter {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
-    implementation("androidx.multidex:multidex:2.0.1")
-    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0"
+    implementation platform('com.google.firebase:firebase-bom:32.5.0')
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
