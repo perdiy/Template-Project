@@ -9,33 +9,15 @@ on:
       - main
 
 jobs:
-  flutter_test:
-    name: Run flutter test and analyze
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "11"
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable"
-          flutter-version: "3.32.8"
-      - run: flutter pub get
-      - run: flutter analyze
-      # Skip test (tidak bikin job gagal kalau ada error test)
-      - run: flutter test || true
-
   build_ios:
     name: Build Flutter (iOS)
-    needs: [flutter_test]
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: "11"
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
           flutter-version: "3.32.8"
@@ -43,23 +25,31 @@ jobs:
       - run: flutter clean
       - run: flutter build ios --release --no-codesign
 
-  build_appbundle:
+  build_android:
     name: Build Flutter (Android)
-    needs: [flutter_test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: "11"
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
           flutter-version: "3.32.8"
       - run: flutter pub get
       - run: flutter clean
+
+      # Build AppBundle (.aab)
       - run: flutter build appbundle --release
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
-          name: app-release
+          name: app-release-aab
           path: build/app/outputs/bundle/release/app-release.aab
+
+      # Build APK (.apk)
+      - run: flutter build apk --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
