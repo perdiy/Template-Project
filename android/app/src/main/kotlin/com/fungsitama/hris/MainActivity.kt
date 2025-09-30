@@ -1,4 +1,4 @@
-package com.fungsitama.hris
+package com.started.code
 
 import io.flutter.embedding.android.FlutterActivity
 
