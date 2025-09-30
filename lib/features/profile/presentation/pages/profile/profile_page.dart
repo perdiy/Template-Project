@@ -33,9 +33,9 @@ class _ProfilePageState extends State<ProfilePage> with MainBoxMixin {
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         padding: EdgeInsets.only(
-          left: Dimens.space24,
-          right: Dimens.space24,
-          top: Dimens.space24,
+          left: Dimens.space22,
+          right: Dimens.space22,
+          top: Dimens.space22,
         ),
         child: Column(
           children: [
