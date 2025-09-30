@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Operation PRD",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "prd",
+                "-t",
+                "lib/main.dart",
+                "--dart-define-from-file",
+                ".env.prd.json"
+            ]
+        },
+        {
+            "name": "Operation STG",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "stg",
+                "-t",
+                "lib/main.dart",
+                "--dart-define-from-file",
+                ".env.stg.json"
+            ]
+        }
+    ]
+}

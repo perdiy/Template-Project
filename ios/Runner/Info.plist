@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
+		<key>CFBundleDevelopmentRegion</key>
+		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>CFBundleDisplayName</key>
+		<string>$(APP_DISPLAY_NAME)</string>
+		<key>CFBundleExecutable</key>
+		<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIdentifier</key>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>hris</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>$(FLUTTER_BUILD_NAME)</string>
+		<key>CFBundleSignature</key>
+		<string>????</string>
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLName</key>
+				<string>erp-deeplink.fctbeta.com</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>https</string>
+				</array>
+			</dict>
+		</array>
+		<key>CFBundleVersion</key>
+		<string>202507291503</string>
+		<key>LSRequiresIPhoneOS</key>
+		<true/>
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<true/>
+		</dict>
+		<key>NSAppleMusicUsageDescription</key>
+		<string>Apple Music Description</string>
+		<key>NSCalendarsUsageDescription</key>
+		<string>Calendar Description</string>
+		<key>NSCameraUsageDescription</key>
+		<string>This app needs access to your camera to let you take photos within the app.</string>
+		<key>NSContactsUsageDescription</key>
+		<string>Contact Description</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>This app requires your location to enable attendance tracking even when the app is in the background.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs your location to enable attendance tracking while using the app.</string>
+		<key>NSMotionUsageDescription</key>
+		<string>NSMotionUsageDescription</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This app requires access to your photo library.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs your location to enable attendance tracking while using the app.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Aplikasi ini membutuhkan akses lokasi untuk fitur absensi yang berjalan saat aplikasi aktif atau di latar belakang.</string>
+		<key>NSSpeechRecognitionUsageDescription</key>
+		<string>NSSpeechRecognitionUsageDescription</string>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
+		<true/>
+		<key>UILaunchStoryboardName</key>
+		<string>$(LAUNCH_SCREEN_STORYBOARD)</string>
+		<key>UIMainStoryboardFile</key>
+		<string>Main</string>
+		<key>UIStatusBarHidden</key>
+		<false/>
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UISupportedInterfaceOrientations~ipad</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationPortraitUpsideDown</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UIViewControllerBasedStatusBarAppearance</key>
+		<false/>
+	</dict>
+</plist>

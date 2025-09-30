@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "435835480993",
+    "project_id": "adfood-operation",
+    "storage_bucket": "adfood-operation.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435835480993:android:39ed4d530539e96c1279e0",
+        "android_client_info": {
+          "package_name": "com.adfood.operation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANzq_qxJMgkCisGjR8902MPwOYTD4kC6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435835480993:android:6679f47b20b93ea91279e0",
+        "android_client_info": {
+          "package_name": "com.adfood.operation.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANzq_qxJMgkCisGjR8902MPwOYTD4kC6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
