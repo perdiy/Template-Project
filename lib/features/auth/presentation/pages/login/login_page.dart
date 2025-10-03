@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> with MainBoxMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       resizeToAvoidBottomInset: true,
       body: BlocListener<AuthCubit, AuthState>(
         listener: (_, state) {
@@ -207,8 +207,8 @@ class _LoginPageState extends State<LoginPage> with MainBoxMixin {
               Icons.alternate_email,
               color: Theme.of(context).textTheme.bodyLarge?.color,
             ),
-            hint: Strings.of(context)!.nipOrUsername,
-            label: Strings.of(context)!.nipOrUsername,
+            hint: Strings.of(context)!.email,
+            label: Strings.of(context)!.email,
             isValid: _formValidator.putIfAbsent("emailOrUsername", () => false),
             validatorListener: (String value) {
               bool isValid = false;
@@ -278,6 +278,7 @@ class _LoginPageState extends State<LoginPage> with MainBoxMixin {
           Button(
             title: Strings.of(context)!.login,
             width: double.maxFinite,
+            borderRadius: 50,
             onPressed: _formValidator.validate()
                 ? () => context.read<AuthCubit>().login(
                     LoginParams(
@@ -286,6 +287,27 @@ class _LoginPageState extends State<LoginPage> with MainBoxMixin {
                     ),
                   )
                 : null,
+          ),
+          SpacerV(value: Dimens.space20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                Strings.of(context)!.donthave,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
+              ),
+              SpacerH(value: Dimens.space5),
+              GestureDetector(
+                onTap: () =>
+                    context.pushNamed(Routes.requestResetPassword.name),
+                child: Text(
+                  Strings.of(context)!.register,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       );

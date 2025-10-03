@@ -54,7 +54,7 @@ class Dimens {
   static double carousel = 167.w;
   static double newsHeight = 185.w;
   static double textField = 50.w;
-  static double logo = 200.w;
+  static double logo = 250.w;
   static double menuIcon = 28.w;
 
   static double header = 200.w;

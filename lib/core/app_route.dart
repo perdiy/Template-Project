@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:operation/dependencies_injection.dart';
+import 'package:operation/features/bulk/presentation/pages/bulk_page.dart';
+import 'package:operation/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:operation/features/features.dart';
+import 'package:operation/features/group/presentation/pages/group_page.dart';
+import 'package:operation/features/receiving/presentation/pages/receiving_page.dart';
+import 'package:operation/features/transfer/presentation/pages/transfer_page.dart';
 import 'package:operation/utils/utils.dart';
 
 enum Routes {
@@ -15,8 +20,11 @@ enum Routes {
   settings("/settings"),
   notification("/notification"),
   underDevelopment("/under-construction"),
-  handoverItem("/handover-item"),
-  supplyItem("/supply-item"),
+  bulkCounting("/bulk-counting"),
+  groupSearch('/group-search'),
+  transfer('/transfer'),
+  receiving('/receiving'),
+  dashboard('/dashboard'),
 
   // Profile
   profile("/profile"),
@@ -55,6 +63,7 @@ class AppRoute {
         name: Routes.root.name,
         redirect: (_, state) => Routes.home.path,
       ),
+
       GoRoute(
         path: Routes.login.path,
         name: Routes.login.name,
@@ -71,6 +80,7 @@ class AppRoute {
         name: Routes.requestResetPassword.name,
         builder: (_, state) => MultiBlocProvider(
           providers: [
+            BlocProvider(create: (_) => sl<VersioningCubit>()),
             BlocProvider(create: (_) => sl<RequestResetPasswordCubit>()),
             BlocProvider(create: (_) => sl<ReloadFormCubit>()),
           ],
@@ -96,6 +106,7 @@ class AppRoute {
         name: Routes.settings.name,
         builder: (_, state) => const SettingsPage(),
       ),
+
       GoRoute(
         path: Routes.termsAndConditions.path,
         name: Routes.termsAndConditions.name,
@@ -165,6 +176,32 @@ class AppRoute {
                 ),
               ),
             ],
+          ),
+          // Baru
+          GoRoute(
+            path: Routes.dashboard.path,
+            name: Routes.dashboard.name,
+            builder: (_, state) => const DashboardPage(),
+          ),
+          GoRoute(
+            path: Routes.bulkCounting.path,
+            name: Routes.bulkCounting.name,
+            builder: (_, state) => const BulkPage(),
+          ),
+          GoRoute(
+            path: Routes.groupSearch.path,
+            name: Routes.groupSearch.name,
+            builder: (_, state) => const GroupPage(),
+          ),
+          GoRoute(
+            path: Routes.transfer.path,
+            name: Routes.transfer.name,
+            builder: (_, state) => const TransferPage(),
+          ),
+          GoRoute(
+            path: Routes.receiving.path,
+            name: Routes.receiving.name,
+            builder: (_, state) => const ReceivingPage(),
           ),
         ],
       ),

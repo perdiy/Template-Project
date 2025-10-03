@@ -23,6 +23,15 @@ class _RequestResetPasswordPageState extends State<RequestResetPasswordPage>
 
   // Global key
   final _formValidator = <String, bool>{};
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  void init() {
+    context.read<VersioningCubit>().mobileVersion();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +40,10 @@ class _RequestResetPasswordPageState extends State<RequestResetPasswordPage>
         backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () => context.back(),
-          icon: const Icon(Icons.arrow_back_ios_new, color: Palette.white),
+          icon: const Icon(Icons.arrow_back_ios_new, color: Palette.cardDark),
         ),
       ).call(context),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       child: BlocListener<RequestResetPasswordCubit, RequestResetPasswordState>(
         listener: (_, state) {
           state.whenOrNull(
@@ -51,44 +60,70 @@ class _RequestResetPasswordPageState extends State<RequestResetPasswordPage>
             },
           );
         },
-        child: Column(
-          children: [
-            Expanded(
-              child: Center(
-                child: Image.asset(Images.imgAdcorp, width: Dimens.logo),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(Dimens.space24),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(Dimens.space24),
-                  topRight: Radius.circular(Dimens.space24),
+        child: SafeArea(
+          top: true,
+          bottom: false,
+          child: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: Image.asset(Images.imgAdcorp, width: Dimens.logo),
                 ),
-                color: Palette.white,
               ),
-              child: SingleChildScrollView(
-                physics: const ClampingScrollPhysics(),
-                child: AutofillGroup(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        Strings.of(context)!.resetPassword,
-                        style: Theme.of(
-                          context,
-                        ).textTheme.titleLarge?.copyWith(fontWeight: semiBold),
-                      ),
-                      SpacerV(value: Dimens.space6),
-                      Text(Strings.of(context)!.descResetPassword),
-                      SpacerV(value: Dimens.space24),
-                      _requestResetPasswordForm(),
-                    ],
+              Container(
+                padding: EdgeInsets.all(Dimens.space24),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimens.space24),
+                    topRight: Radius.circular(Dimens.space24),
+                  ),
+                  color: Palette.white,
+                ),
+                child: SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(),
+                  child: AutofillGroup(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          Strings.of(context)!.resetPassword,
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(fontWeight: semiBold),
+                        ),
+                        SpacerV(value: Dimens.space6),
+                        Text(Strings.of(context)!.descResetPassword),
+                        SpacerV(value: Dimens.space24),
+                        _requestResetPasswordForm(),
+                        SpacerV(value: Dimens.space100),
+
+                        // Version info at bottom
+                        Align(
+                          alignment: Alignment.center,
+                          child: BlocBuilder<VersioningCubit, VersioningState>(
+                            builder: (context, state) {
+                              return state.maybeWhen(
+                                success: (data) {
+                                  return Text(
+                                    '${Strings.of(context)!.appVersion} $data',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(fontWeight: medium),
+                                  );
+                                },
+                                orElse: () =>
+                                    PlaceholderBox(width: Dimens.carousel),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -122,6 +157,7 @@ class _RequestResetPasswordPageState extends State<RequestResetPasswordPage>
               SpacerV(value: Dimens.space24),
               Button(
                 width: double.maxFinite,
+                borderRadius: 50,
                 title: Strings.of(context)!.sendInstruction,
                 onPressed: _formValidator.validate()
                     ? () => context

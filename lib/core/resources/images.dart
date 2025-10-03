@@ -13,7 +13,15 @@ class Images {
   static String icTasklist = "assets/icons/ic_tasklist.png";
   static String icDownload = "assets/icons/ic_download.png";
   static String icAlert = "assets/icons/ic_alert.svg";
-  static String imgAdcorp = "assets/images/img_adcorp.png";
+  static String icDashboard = "assets/icons/dashboard.png";
+  // Baru
+  static String icBulk = "assets/icons/bulk.png";
+  static String icGroup = "assets/icons/group_search.png";
+  static String icTransfer = "assets/icons/transfer.png";
+  static String icReceiving = "assets/icons/receiving.png";
+  static String icMyprofile = "assets/icons/my_profile.png";
+
+  static String imgAdcorp = "assets/images/logo-new rs fatmawati jakarta 1.png";
   static String imgCheck = "assets/images/img_check.png";
   static String imgFail = "assets/images/img_fail.png";
   static String imgLocationPermission =

@@ -40,25 +40,25 @@ class _MenuCardState extends State<MenuCard> {
                     widget.onTap?.call();
                   }
                 : null,
-            borderRadius: BorderRadius.circular(20.r),
+            borderRadius: BorderRadius.circular(6.r),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.r),
+                borderRadius: BorderRadius.circular(6.r),
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: item.gradient,
                 ),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
-                    color: item.gradient.last.withValues(alpha: 0.35),
-                    blurRadius: 16,
-                    offset: const Offset(0, 8),
+                    color: Colors.black26,
+                    blurRadius: 6,
+                    offset: Offset(1, 2),
+                    spreadRadius: 0.2,
                   ),
                 ],
               ),
-              child: Stack(
-                clipBehavior: Clip.none,
+              child: Column(
                 children: [
                   // Glass overlay
                   Container(
@@ -73,49 +73,25 @@ class _MenuCardState extends State<MenuCard> {
                       ),
                     ),
                   ),
-                  // Decorative soft blob
-                  Positioned(
-                    right: -20.w,
-                    top: -20.w,
-                    child: Container(
-                      width: 60.w,
-                      height: 60.w,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withValues(alpha: 0.18),
-                      ),
-                    ),
-                  ),
-                  // Content
+
                   Padding(
                     padding: EdgeInsets.all(Dimens.space12),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+
                       children: [
-                        Container(
-                          width: 44.w,
-                          height: 44.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withValues(alpha: 0.18),
-                            border: Border.all(
-                              color: Colors.white.withValues(alpha: 0.5),
-                              width: 1,
-                            ),
-                          ),
-                          child: Icon(
-                            item.icon,
-                            size: 24.sp,
-                            color: Colors.white,
-                          ),
+                        Image.asset(
+                          item.icon,
+                          width: Dimens.space32,
+                          height: Dimens.space32,
                         ),
                         SizedBox(height: 8.h),
                         Text(
                           item.title,
                           textAlign: TextAlign.center,
                           style: theme.textTheme.labelMedium?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
                             letterSpacing: 0.1,
                           ),
                           maxLines: 2,
@@ -124,30 +100,6 @@ class _MenuCardState extends State<MenuCard> {
                       ],
                     ),
                   ),
-
-                  // Badge
-                  if ((item.badge ?? 0) > 0)
-                    Positioned(
-                      top: 8.h,
-                      right: 8.w,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 6.w,
-                          vertical: 2.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(999),
-                        ),
-                        child: Text(
-                          '${item.badge}',
-                          style: theme.textTheme.labelSmall?.copyWith(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
                 ],
               ),
             ),

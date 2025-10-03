@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:operation/core/app_route.dart';
+import 'package:operation/core/resources/resources.dart';
 
 class HomeMenuItem {
   final String title;
-  final IconData icon;
+  final String icon;
   final String routeName;
   final List<Color> gradient;
   final int? badge; // optional
@@ -22,15 +22,39 @@ class HomeMenuItem {
 
 final List<HomeMenuItem> kMenuItems = [
   HomeMenuItem(
-    title: 'Handover Item',
-    icon: Iconsax.export_3,
-    routeName: Routes.handoverItem.name, // ganti sesuai route lo
-    gradient: [const Color(0xFF84FAB0), const Color(0xFF8FD3F4)],
+    title: 'Dashboard',
+    icon: Images.icDashboard,
+    routeName: Routes.dashboard.name,
+    gradient: [Palette.menuColors, Palette.menuColors],
   ),
   HomeMenuItem(
-    title: 'Supply Item',
-    icon: Iconsax.truck_fast,
-    routeName: Routes.supplyItem.name, // ganti sesuai route lo
-    gradient: [const Color(0xFFFFC371), const Color(0xFFFF5F6D)],
+    title: 'Bulk Counting',
+    icon: Images.icBulk,
+    routeName: Routes.bulkCounting.name,
+    gradient: [Palette.menuColors, Palette.menuColors],
+  ),
+  HomeMenuItem(
+    title: 'Group Search',
+    icon: Images.icGroup,
+    routeName: Routes.groupSearch.name,
+    gradient: [Palette.menuColors, Palette.menuColors],
+  ),
+  HomeMenuItem(
+    title: 'Transfer',
+    icon: Images.icTransfer,
+    routeName: Routes.transfer.name,
+    gradient: [Palette.menuColors, Palette.menuColors],
+  ),
+  HomeMenuItem(
+    title: 'Receiving',
+    icon: Images.icReceiving,
+    routeName: Routes.receiving.name,
+    gradient: [Palette.menuColors, Palette.menuColors],
+  ),
+  HomeMenuItem(
+    title: 'My Profile',
+    icon: Images.icMyprofile,
+    routeName: Routes.profile.name,
+    gradient: [Palette.menuColors, Palette.menuColors],
   ),
 ];

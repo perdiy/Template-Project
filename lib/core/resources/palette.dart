@@ -54,10 +54,11 @@ import 'package:flutter/material.dart';
 class Palette {
   Palette._();
 
-  static const Color primary = Color(0xff177B90);
+  static const Color primary = Color(0xff53B0AB);
   static const Color primaryLight = Color(0xff51A8B8);
 
   static const Color background = Color(0xffffffff);
+  static const Color menuColors = Color(0xffFAFAFA);
   static const Color backgroundDark = Color(0xff1e1e2e);
   static const Color card = Color(0xffccd0da);
   static const Color cardDark = Color(0xff313244);

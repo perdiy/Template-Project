@@ -26,7 +26,7 @@ class MainCubit extends Cubit<MainState> {
   void initMenu(BuildContext context) {
     dataMenus = [
       DataHelper(title: Strings.of(context)!.home, isSelected: true),
-      DataHelper(title: Strings.of(context)!.profile),
+      DataHelper(title: Strings.of(context)!.logout),
     ];
     updateIndex(_currentIndex);
   }

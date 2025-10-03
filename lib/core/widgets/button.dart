@@ -5,28 +5,37 @@ class Button extends StatelessWidget {
   final String title;
   final VoidCallback? onPressed;
   final double? width;
+  final double? height;
   final Color? color;
   final Color? titleColor;
   final double? fontSize;
   final Color? splashColor;
   final IconData? icon;
+  final double? borderRadius;
+  final Color? borderColor;
+  final double? borderWidth;
 
   const Button({
     super.key,
     required this.title,
     required this.onPressed,
     this.width,
+    this.height,
     this.color,
     this.titleColor,
     this.fontSize,
     this.splashColor,
     this.icon,
+    this.borderRadius,
+    this.borderColor,
+    this.borderWidth,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
+      height: height,
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
@@ -43,7 +52,11 @@ class Button extends StatelessWidget {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(Dimens.buttonRadius),
+              Radius.circular(borderRadius ?? Dimens.buttonRadius),
+            ),
+            side: BorderSide(
+              color: borderColor ?? Colors.transparent,
+              width: borderWidth ?? 0,
             ),
           ),
         ),
@@ -56,6 +69,7 @@ class Button extends StatelessWidget {
               title,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 color: titleColor ?? Palette.white,
+                fontSize: fontSize,
               ),
               textAlign: TextAlign.center,
             ),

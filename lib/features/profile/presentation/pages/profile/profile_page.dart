@@ -43,19 +43,19 @@ class _ProfilePageState extends State<ProfilePage> with MainBoxMixin {
             SpacerV(value: Dimens.space24),
             _buildMenuProfile(),
             SpacerV(value: Dimens.space75),
-            Button(
-              title: Strings.of(context)!.logout,
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => DialogLogout(
-                    onPressed: () => context.read<LogoutCubit>().logout(),
-                  ),
-                );
-              },
-              titleColor: Palette.white,
-              width: double.maxFinite,
-            ),
+            // Button(
+            //   title: Strings.of(context)!.logout,
+            //   onPressed: () {
+            //     showDialog(
+            //       context: context,
+            //       builder: (_) => DialogLogout(
+            //         onPressed: () => context.read<LogoutCubit>().logout(),
+            //       ),
+            //     );
+            //   },
+            //   titleColor: Palette.white,
+            //   width: double.maxFinite,
+            // ),
             SpacerV(value: Dimens.space12),
             BlocBuilder<VersioningCubit, VersioningState>(
               builder: (context, state) {
@@ -122,24 +122,24 @@ class _ProfilePageState extends State<ProfilePage> with MainBoxMixin {
                         ).textTheme.titleSmall?.copyWith(fontWeight: medium),
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SpacerV(value: Dimens.space4),
-                      Text(
-                        '${data?.nip}',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: regular,
-                          color: Palette.subText,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SpacerV(value: Dimens.space4),
-                      Text(
-                        '${data?.position?.positionName}',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: regular,
-                          color: Palette.subText,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      // SpacerV(value: Dimens.space4),
+                      // Text(
+                      //   '${data?.nip}',
+                      //   style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      //     fontWeight: regular,
+                      //     color: Palette.subText,
+                      //   ),
+                      //   overflow: TextOverflow.ellipsis,
+                      // ),
+                      // SpacerV(value: Dimens.space4),
+                      // Text(
+                      //   '${data?.position?.positionName}',
+                      //   style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      //     fontWeight: regular,
+                      //     color: Palette.subText,
+                      //   ),
+                      //   overflow: TextOverflow.ellipsis,
+                      // ),
                     ],
                   ),
                 ),

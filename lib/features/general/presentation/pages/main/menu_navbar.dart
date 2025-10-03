@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:operation/core/core.dart';
+import 'package:operation/features/auth/auth.dart';
 import 'package:operation/utils/utils.dart';
 
 class MenuNavbar extends StatefulWidget {
@@ -71,8 +73,8 @@ class _MenuNavbarState extends State<MenuNavbar> {
 
     if (title == Strings.of(context)!.home) {
       iconData = Iconsax.home_1;
-    } else if (title == Strings.of(context)!.profile) {
-      iconData = Iconsax.user;
+    } else if (title == Strings.of(context)!.logout) {
+      iconData = Iconsax.logout;
     } else {
       iconData = Icons.circle; // Default icon
     }
@@ -84,12 +86,12 @@ class _MenuNavbarState extends State<MenuNavbar> {
     // Navigate based on selected menu title
     if (title == Strings.of(context)!.home) {
       context.goNamed(Routes.home.name);
-    } else if (title == Strings.of(context)!.profile) {
-      context.goNamed(Routes.profile.name);
-      // showModalBottomSheet(
-      //   context: context,
-      //   builder: (_) => BottomsheetResetPasswordSuccess(),
-      // );
+    } else if (title == Strings.of(context)!.logout) {
+      showDialog(
+        context: context,
+        builder: (_) =>
+            DialogLogout(onPressed: () => context.read<LogoutCubit>().logout()),
+      );
     }
   }
 }

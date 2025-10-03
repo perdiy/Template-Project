@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:operation/core/core.dart';
@@ -31,7 +30,7 @@ class _HomePageState extends State<HomePage> with MainBoxMixin {
     super.didChangeDependencies();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      _router = GoRouter.of(context); // Simpan referensi router
+      _router = GoRouter.of(context);
       _router!.routerDelegate.addListener(_handleRouteChange);
     });
   }
@@ -49,32 +48,37 @@ class _HomePageState extends State<HomePage> with MainBoxMixin {
   @override
   Widget build(BuildContext context) {
     return Parent(
-      backgroundColor: Palette.primaryLight,
+      backgroundColor: Palette.background,
       child: Column(
         children: [
-          // Header section dengan background gradient
+          SpacerV(value: Dimens.space30),
+
           Expanded(
-            flex: 2,
-            child: Stack(
+            child: Column(
               children: [
-                Image.asset(
-                  Images.imgOrnament,
-                  width: 150.w,
-                  height: 250.w,
-                  fit: BoxFit.fill,
-                ),
-                SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Dimens.space24),
-                    child: Column(
-                      children: [
-                        SpacerV(value: Dimens.space36),
-                        _buildHeaderHome(),
-                      ],
-                    ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Dimens.space24),
+                  child: Column(
+                    children: [
+                      SpacerV(value: Dimens.space36),
+                      _buildHeaderHome(),
+                    ],
                   ),
                 ),
               ],
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: Dimens.space24),
+                child: Image.asset(
+                  Images.imgAdcorp,
+                  width: Dimens.logo,
+                  height: Dimens.logo,
+                ),
+              ),
             ),
           ),
           // Main menu section
@@ -91,46 +95,18 @@ class _HomePageState extends State<HomePage> with MainBoxMixin {
           return Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (data?.userAccount?.profilePic != null)
-                CircleImage(
-                  size: Dimens.profilePicture,
-                  url: data?.userAccount?.profilePic ?? '',
-                )
-              else
-                ClipOval(
-                  child: Image.asset(
-                    Images.imgProfileDefault,
-                    width: Dimens.profilePicture,
-                    height: Dimens.profilePicture,
-                    fit: BoxFit.cover,
-                  ),
-                ),
               const SpacerH(),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${data?.firstname} ${data?.lastname}',
+                      '${'Hi, '}${data?.firstname} ${data?.lastname}',
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
                         fontWeight: semiBold,
-                        color: Palette.white,
+                        color: Palette.backgroundDark,
                       ),
                       overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      '${data?.nip}',
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        fontWeight: regular,
-                        color: Palette.white,
-                      ),
-                    ),
-                    Text(
-                      '${data?.position?.positionName}',
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        fontWeight: regular,
-                        color: Palette.white,
-                      ),
                     ),
                   ],
                 ),
@@ -140,7 +116,7 @@ class _HomePageState extends State<HomePage> with MainBoxMixin {
                 child: Icon(
                   Iconsax.notification,
                   size: Dimens.space24,
-                  color: Palette.white,
+                  color: Palette.backgroundDark,
                 ),
               ),
             ],
@@ -155,32 +131,18 @@ class _HomePageState extends State<HomePage> with MainBoxMixin {
     return Container(
       width: double.maxFinite,
       padding: EdgeInsets.all(Dimens.space24),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(Dimens.space16),
-          topRight: Radius.circular(Dimens.space16),
-        ),
-        color: Palette.white,
-      ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Main Menu',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: Palette.primary,
-            ),
-          ),
-          SizedBox(height: Dimens.space16),
           Expanded(
             child: GridView.builder(
               itemCount: kMenuItems.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width < 600 ? 2 : 3,
+                crossAxisCount: MediaQuery.of(context).size.width < 600 ? 3 : 3,
                 mainAxisSpacing: Dimens.space16,
                 crossAxisSpacing: Dimens.space16,
-                childAspectRatio: 0.9,
+                childAspectRatio: 1.1,
               ),
               itemBuilder: (context, index) {
                 final item = kMenuItems[index];

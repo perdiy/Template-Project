@@ -32,7 +32,7 @@
   "logout": "Keluar",
   "logoutDesc": "Apakah anda ingin keluar dari aplikasi?",
   "yes": "Ya",
-  "descLogin": "Masukkan NIP atau Username untuk masuk ke akun",
+  "descLogin": "Masukkan email Anda di bawah ini untuk masuk ke akun Anda",
   "forgotPassword": "Lupa kata sandi?",
   "appVersion": "Versi",
   "descResetPassword": "Masukkan email yang terkait dengan akun Anda dan \nkami akan mengirimkan email dengan instruksi untuk mengatur \nulang kata sandi Anda.",
@@ -226,5 +226,9 @@
   "dialogNewDevice": "Terdeteksi Perangkat Baru",
   "dialogNewDeviceDesc": "Anda terdeteksi menggunakan perangkat baru, Silahkan register wajah anda \nuntuk menggunakan aplikasi",
   "underDevelopmentTitle": "Dalam Pengembangan",
-  "underDevelopmentDesc": "Kami sedang mengerjakan fitur ini, \nNantikan update selanjutnya."
+  "underDevelopmentDesc": "Kami sedang mengerjakan fitur ini, \nNantikan update selanjutnya.",
+  "donthave": "Tidak punya akun?",
+  "register": "Daftar disini",
+  "clear": "Bersih",
+  "submit": "Kirim"
 }

@@ -32,7 +32,7 @@
   "logout": "Logout",
   "logoutDesc": "Do you want to logout from the app?",
   "yes": "Yes",
-  "descLogin": "Enter your NIP or Username to log in",
+  "descLogin": "Enter your email below to login to your account",
   "forgotPassword": "Forgot your password?",
   "appVersion": "Version",
   "descResetPassword": "Enter the email associated with your account and \nwe'll send an email with instructions to reset your \npassword.",
@@ -226,5 +226,9 @@
   "dialogNewDevice": "New Device Detected",
   "dialogNewDeviceDesc": "You are using a new device, please\nregister your face to use this application",
   "underDevelopmentTitle": "Under Development",
-  "underDevelopmentDesc": "We're working on this feature, \nStay tuned for future updates."
+  "underDevelopmentDesc": "We're working on this feature, \nStay tuned for future updates.",
+  "donthave": "Dont’ have an account?",
+  "register": "Register Here",
+  "clear": "Clear",
+  "submit": "Submit"
 }

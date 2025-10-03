@@ -10,19 +10,6 @@ class PlaceholderProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Shimmer.fromColors(
-          baseColor: Colors.black26,
-          highlightColor: Colors.black54,
-          child: Container(
-            width: sizePic ?? Dimens.space46,
-            height: sizePic ?? Dimens.space46,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black26,
-            ),
-          ),
-        ),
-        const SpacerH(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,19 +22,6 @@ class PlaceholderProfile extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimens.space4),
                   color: Colors.black26,
-                ),
-              ),
-            ),
-            const SpacerV(),
-            Shimmer.fromColors(
-              baseColor: Colors.black26,
-              highlightColor: Colors.black54,
-              child: Container(
-                width: Dimens.space140,
-                height: Dimens.space14,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimens.space4),
-                  color: Colors.black38,
                 ),
               ),
             ),
